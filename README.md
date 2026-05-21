@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shopline — Frontend
 
-## Getting Started
+Interface e-commerce pour la boutique de mode sénégalaise Shopline.
 
-First, run the development server:
+## Stack
+
+- **Next.js 15 (App Router)** — framework React
+- **TypeScript** — typage statique
+- **Tailwind CSS** — styles
+- **Stripe.js** — paiement par carte
+- **qrcode.react** — QR code Wave / Orange Money
+
+## Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Créer un fichier `.env.local` :
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev      # développement → http://localhost:3000
+npm run build    # compiler
+npm start        # production
+```
 
-## Learn More
+## Pages
 
-To learn more about Next.js, take a look at the following resources:
+| URL | Description |
+|-----|-------------|
+| `/` | Catalogue produits |
+| `/product/[id]` | Détail produit |
+| `/checkout` | Paiement (Stripe ou Wave/OM) |
+| `/orders` | Mes commandes |
+| `/admin` | Dashboard administrateur |
+| `/login` | Connexion |
+| `/register` | Inscription |
+| `/success` | Confirmation de commande |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Le panier est persistant (localStorage)
+- Le checkout crée un compte automatiquement si l'utilisateur n'est pas connecté
+- Le paiement mobile (Wave/Orange Money) est une simulation
