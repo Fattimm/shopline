@@ -11,7 +11,7 @@ export default function UserMenu() {
   if (!user) {
     return (
       <Link href="/login">
-        <button className="px-8 py-4 bg-primary text-white rounded-full hover:bg-primary-light transition font-semibold text-lg shadow-lg">
+        <button className="px-5 py-2.5 md:px-8 md:py-4 bg-primary text-white rounded-full hover:bg-primary-light transition font-semibold text-sm md:text-lg shadow-lg whitespace-nowrap">
           Connexion
         </button>
       </Link>
@@ -20,15 +20,15 @@ export default function UserMenu() {
 
   return (
     <div className="relative">
-      <button onClick={() => setOpen(!open)} className="flex items-center gap-3 hover:opacity-80 transition">
-        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-light flex items-center justify-center text-white font-bold text-xl shadow-lg">
+      <button onClick={() => setOpen(!open)} className="flex items-center gap-2 md:gap-3 hover:opacity-80 transition">
+        <div className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-primary to-primary-light flex items-center justify-center text-white font-bold text-base md:text-xl shadow-lg flex-shrink-0">
           {user.name?.[0]?.toUpperCase() || "U"}
         </div>
         <span className="hidden md:block font-medium">{user.name}</span>
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-3 w-56 bg-white rounded-3xl shadow-2xl overflow-hidden border border-primary/10 z-50">
+        <div className="absolute right-0 mt-3 w-56 max-w-[90vw] bg-white rounded-3xl shadow-2xl overflow-hidden border border-primary/10 z-50">
           <Link href="/orders" onClick={() => setOpen(false)}
             className="block px-6 py-4 hover:bg-accent/10 transition">
             Mes commandes
